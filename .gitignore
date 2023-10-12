@@ -165,4 +165,15 @@ node_modules
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+*.swp
+*.swo
+*.swn
+*.swm
+*.swl
+*.swj
+*.swk
+*.swi
+
+
 >>>>>>> d2664ec992b82a5b7c3ca6095d1291f9e1c5957f
