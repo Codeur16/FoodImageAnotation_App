@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
 # dependencies
 node_modules/
 
@@ -156,3 +159,10 @@ dist
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 node_modules
+#yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+>>>>>>> d2664ec992b82a5b7c3ca6095d1291f9e1c5957f
