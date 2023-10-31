@@ -6,13 +6,15 @@ import tw from "tailwind-react-native-classnames";
 import * as Animatable from "react-native-animatable";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
+import SearchBar from "../components/searchBar";
 export function SearchSreen() {
   // { route, navigation }) {
   // const { Id, Name } = route.params;
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }} className="bg-white">
-      <Text>Search Screen</Text>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "flex-start" }} className="bg-white">
+      {/* <View style={styles.container0} className=" bg-slate-0 "> */}
+        <SearchBar />
+      {/* </View> */}
     </View>
   );
 }

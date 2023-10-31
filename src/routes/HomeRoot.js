@@ -206,11 +206,14 @@ export function HomeRoot() {
                     : {}),
                 }}
               >
-                <Ionicons
+                {focused?<Ionicons name="ios-apps" size={32}
+                  color= "#FFF" /> :  <Ionicons name="ios-apps-outline" size={30}
+                  color= "#FFF"  />}
+                {/* <Ionicons
                   name="ios-menu"
                   size={35}
                   color={focused ? "#FFF" : "rgba(0, 0, 0, 0.5)"}
-                />
+                /> */}
                 <Text
                   style={{
                     position: "absolute",
