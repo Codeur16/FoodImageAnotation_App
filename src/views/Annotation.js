@@ -11,17 +11,9 @@ import Navbar from "../components/Navbar";
 export function AnnotationSreen({route, navigation}){
   // const { Id, Name}= route.params
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }} className="bg-white">
       <Text>Accueil</Text>
-      {/* <Text> User Id: {JSON.stringify(Id)}</Text>
-      <Text> User Name: {JSON.stringify(Name)}</Text> */}
-      <Button
-        title="Back to landing page"
-        onPress={() => {
-          navigation.goBack();
-        }}
-      />
-      {/* <Navbar navigation={navigation} /> */}
+   
     </View>
   );
 }

@@ -1,5 +1,4 @@
 import React, { useEffect,useState } from "react";
-import { StatusBar } from "expo-status-bar";
 import {  Platform, StyleSheet, Text, Image, View } from "react-native";
 import { ActivityIndicator } from "react-native";
 import logo from "../assets/images/icon.512.png";

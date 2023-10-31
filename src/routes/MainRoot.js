@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { LandingSreen } from "../views/landingScreen";
-import { HomeSreen } from "../views/Home";
-import { AccueilSreen } from "../views/Annotation";
-import { NotificationSreen } from "../views/Recommendation";
-import { ParametreSreen } from "../views/Search";
 import { LogoTitle } from "../components/logoTitle";
 import { FontFamily } from "../../GlobalStyles";
 import { HomeRoot } from "./HomeRoot";
+import { Ionicons } from "@expo/vector-icons";
+import { TouchableOpacity, View } from "react-native";
+// import DropdownMenu from "../components/DropdwonMenu";
 const Stack = createNativeStackNavigator();
 
 export default function MainRoot() {
@@ -58,13 +57,32 @@ export default function MainRoot() {
             fontSize: 25,
             fontWeight: "200",
           },
-          
           headerLeft: (props) => <LogoTitle {...props} />,
+          headerRight: () => (
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                marginRight: 10,
+              }}
+            >
+              <TouchableOpacity
+                onPress={() => {
+                  console.log("Afficher le menu des notifications");
+                }}
+              >
+                <Ionicons
+                  name="notifications"
+                  size={24}
+                  color="#fff"
+                  style={{ marginRight: 10 }}
+                />
+              </TouchableOpacity>
+            
+            </View>
+          ),
         }}
       />
-      {/* <Stack.Screen name="Accueil" component={AccueilSreen} />
-      <Stack.Screen name="Parametre" component={ParametreSreen} />
-      <Stack.Screen name="Notification" component={NotificationSreen} /> */}
     </Stack.Navigator>
   );
 }
