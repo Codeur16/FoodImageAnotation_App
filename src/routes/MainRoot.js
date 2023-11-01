@@ -6,10 +6,14 @@ import { FontFamily } from "../../GlobalStyles";
 import { HomeRoot } from "./HomeRoot";
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity, View } from "react-native";
+import { NotificationScreen } from "../views/Notification";
+
+import { useNavigation } from "@react-navigation/native";
 // import DropdownMenu from "../components/DropdwonMenu";
 const Stack = createNativeStackNavigator();
 
 export default function MainRoot() {
+  const navigation = useNavigation();
   return (
     <Stack.Navigator
       initialRouteName="Landing"
@@ -68,7 +72,7 @@ export default function MainRoot() {
             >
               <TouchableOpacity
                 onPress={() => {
-                  console.log("Afficher le menu des notifications");
+                  navigation.navigate("Notification")
                 }}
               >
                 <Ionicons
@@ -82,6 +86,11 @@ export default function MainRoot() {
             </View>
           ),
         }}
+      />
+      <Stack.Screen
+        name="Notification"
+        component={NotificationScreen}
+        // options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );
