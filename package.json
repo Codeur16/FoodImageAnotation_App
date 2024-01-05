@@ -21,11 +21,16 @@
     "@react-navigation/native-stack": "^6.7.0",
     "@react-navigation/routers": "^6.1.0",
     "@react-navigation/stack": "^6.2.1",
+    "@tensorflow-models/coco-ssd": "^2.2.3",
+    "@tensorflow/tfjs-backend-cpu": "^4.15.0",
+    "@tensorflow/tfjs-backend-webgl": "^4.15.0",
     "@types/react": "~18.2.14",
+    "axios": "^1.6.2",
     "dom-to-image": "^2.6.0",
     "expo": "~49.0.13",
     "expo-font": "~11.4.0",
-    "expo-image": "~1.3.4",
+    "expo-image": "~1.3.5",
+    "expo-image-picker": "~14.3.2",
     "expo-splash-screen": "~0.20.5",
     "expo-status-bar": "~1.6.0",
     "native-base": "^3.4.28",
@@ -45,8 +50,7 @@
     "tailwind-react-native-classnames": "^1.5.1",
     "tailwind-rn": "^4.2.0",
     "tailwindcss-react-native": "^1.7.10",
-    "typescript": "^5.1.3",
-    "expo-image-picker": "~14.3.2"
+    "typescript": "^5.1.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

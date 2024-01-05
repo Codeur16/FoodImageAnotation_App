@@ -32,7 +32,7 @@ async function pickImage() {
   }
   
     useEffect(() => {
-        (async () => {
+        (async () => {              
         if (Platform.OS !== 'web') {
             const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
             // const { status } = await ImagePicker.requestCameraPermissionsAsync();

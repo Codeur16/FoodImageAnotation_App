@@ -27,7 +27,7 @@ import { AnnotationSreen } from "./Annotation";
 
 export function HomeSreen({ navigation }) {
   // on utilise la fonction useEffect pour charger le composant une seule fois au chargement du component
- 
+
   return (
     <View style={styles.container} className="bg-white">
       <View style={styles.container0} className=" bg-slate-0 ">
