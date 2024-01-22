@@ -4,6 +4,7 @@ import { LandingSreen } from "../views/landingScreen";
 import { LogoTitle } from "../components/logoTitle";
 import { FontFamily } from "../../GlobalStyles";
 import { HomeRoot } from "./HomeRoot";
+import { AuthRoot } from "./AuthRoot";
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity, View } from "react-native";
 import { NotificationScreen } from "../views/Notification";
@@ -37,16 +38,16 @@ export default function MainRoot() {
         },
       }}
     >
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Landing"
         component={LandingSreen}
         options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="HomeRoot"
-        component={HomeRoot}
+      /> */}
+      {/* <Stack.Screen
+        name="AuthRoot"
+        component={AuthRoot}
         options={{
-          title: "FIAR",
+          title: "GoodFood",
           headerTitleAlign: "center",
           headerStyle: {
             backgroundColor: "#29C752",
@@ -60,6 +61,53 @@ export default function MainRoot() {
             fontFamily: FontFamily.Salsa,
             fontSize: 25,
             fontWeight: "200",
+          },
+          headerLeft: (props) => <LogoTitle {...props} />,
+          // headerRight: () => (
+          //   <View
+          //     style={{
+          //       flexDirection: "row",
+          //       alignItems: "center",
+          //       marginRight: 10,
+          //     }}
+          //   >
+          //     <TouchableOpacity
+          //       onPress={() => {
+          //         navigation.navigate("Notification")
+          //       }}
+          //     >
+          //       <Ionicons
+          //         name="notifications"
+          //         size={24}
+          //         color="#fff"
+          //         style={{ marginRight: 10 }}
+          //       />
+          //     </TouchableOpacity>
+            
+          //   </View>
+          // ),
+        }}
+      /> */}
+      <Stack.Screen
+        name="HomeRoot"
+        component={HomeRoot}
+        options={{
+          headerShown:true,
+          title: "CamerExpress",
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: "#ffff",
+          
+          },
+          headerTintColor: "#000000",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+          headerTitleAlign: "left",
+          headerTitleStyle: {
+            fontFamily: FontFamily.Laila,
+            fontSize: 18,
+            fontWeight: "600",
           },
           headerLeft: (props) => <LogoTitle {...props} />,
           headerRight: () => (

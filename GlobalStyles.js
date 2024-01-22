@@ -1,24 +1,23 @@
 /* fonts */
-export const FontFamily = {
-  North: "NorthZone",
-  Poppins: "Poppins-Medium",
-  Laila: "laila",
-  Ubuntu:"Ubuntu",
-  Salsa:"salsa",
-  Plento:"plento"
+const FontFamily = {
+  North: 'NorthZone',
+  Poppins: 'Poppins-Medium',
+  Laila: 'laila',
+  Ubuntu:'Ubuntu',
+  Salsa:'salsa',
+  Plento:'plento'
 
-  
+ 
 };
-/* font sizes */
-export const FontSize = {
-  size_xl: 20,
-};
-/* Colors */
-export const Color = {
-  limegreen: "#29c752",
-  white: "#fff",
-};
-/* border radiuses */
-export const Border = {
-  br_3xs: 10,
-};
+module.exports={ FontFamily }
+
+// /* font sizes */
+// export const FontSize = {
+//   size_xl: 20,
+// };
+// /* Colors */
+
+// /* border radiuses */
+// export const Border = {
+//   br_3xs: 10,
+// };

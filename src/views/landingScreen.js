@@ -17,8 +17,8 @@ export function LandingSreen() {
   useEffect(() => {
     // Naviguer automatiquement vers Ecran2 après un délai de 2 secondes (2000 ms)
     const timer = setTimeout(() => {
-      navigation.navigate("HomeRoot");
-    }, 50);
+      navigation.navigate("AuthRoot");        
+    }, 6000);
 
     // N'oubliez pas de nettoyer le timer pour éviter les fuites de mémoire
     return () => clearTimeout(timer);
@@ -30,10 +30,10 @@ export function LandingSreen() {
   return (
     <View style={styles.container}>
       <StyledView style={styles.container1} className="">
-        <StyledText style={styles.StyledText.title2}> FIAR</StyledText>
+        <StyledText style={styles.StyledText.title2}> GoodFood</StyledText>
         <StyledText style={styles.StyledText.title}>
           {" "}
-          Food Image Annotation and Recommendation
+          Good Food
         </StyledText>
       </StyledView>
       <StyledView style={styles.container2}>

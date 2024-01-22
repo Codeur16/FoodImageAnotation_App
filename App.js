@@ -3,7 +3,10 @@ import { NavigationContainer, useNavigatio } from "@react-navigation/native";
 import { Root } from "./src/Root";
 import  "./nativewind-output" ;
 import {useFonts} from "expo-font";
+// import SplashScreen from 'react-native-splash-screen';
 
+// // Appel à SplashScreen.hide() lorsque votre application est prête
+// SplashScreen.hide();
 
 //function principale gestion de l'effet principale
 export default function App() {
