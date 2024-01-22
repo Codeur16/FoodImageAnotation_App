@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from "react";
-import {  Platform, StyleSheet, Text, Image, View } from "react-native";
+import {  Platform, StyleSheet, Text, Image, View,ToastAndroid } from "react-native";
 import { ActivityIndicator } from "react-native";
 import logo from "../assets/images/icon.512.png";
 import food1 from "../assets/images/ellipse-1.png";
@@ -7,22 +7,61 @@ import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
 import { styled } from "nativewind";
 import {FontFamily} from "../../GlobalStyles";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const StyledView = styled(View);
 const StyledText = styled(Text);
+
+
+
+// Fonction pour vérifier si l'utilisateur est déjà connecté
+const checkIfUserIsLoggedIn = async () => {
+  try {
+    const userToken = await AsyncStorage.getItem('userToken');
+    return  userToken !== null;
+  } catch (error) {
+    console.error('Erreur lors de la vérification de la connexion:', error);
+    return false;
+  }
+};
 
 // function d'un autre ecran de navigation
 
 export function LandingSreen() {
   const navigation = useNavigation();
+ const [isLoggedIn, setIsLoggedIn]=useState(undefined)
+
+
+// utilisation au démarrage de l'application
+const checkUserStatusOnAppStart = async () => {
+  let isLoggedIn = await checkIfUserIsLoggedIn();
+  
+  if (isLoggedIn) {
+    // Utilisateur déjà connecté, procédez en conséquence
+    ToastAndroid.show(
+      `Bon retour parmi nous !!!\nRedirection Automatique`,
+      ToastAndroid.LONG)
+      setIsLoggedIn(isLoggedIn)
+      return navigation.navigate("HomeRoot");
+   
+  } else {
+    // Redirigez vers l'écran de connexion
+    setIsLoggedIn(isLoggedIn)
+    ToastAndroid.show(
+      `Nouveau utilisateur !!`,
+      ToastAndroid.LONG)
+   return  navigation.navigate("AuthRoot"); 
+  }
+};
+
   useEffect(() => {
     // Naviguer automatiquement vers Ecran2 après un délai de 2 secondes (2000 ms)
     const timer = setTimeout(() => {
-      navigation.navigate("HomeRoot");
-    }, 50);
+      checkUserStatusOnAppStart()
+    }, 6000);
 
     // N'oubliez pas de nettoyer le timer pour éviter les fuites de mémoire
     return () => clearTimeout(timer);
-  });
+  },[]);
 
   
 
@@ -30,10 +69,10 @@ export function LandingSreen() {
   return (
     <View style={styles.container}>
       <StyledView style={styles.container1} className="">
-        <StyledText style={styles.StyledText.title2}> FIAR</StyledText>
+        <StyledText style={styles.StyledText.title2}> GoodFood</StyledText>
         <StyledText style={styles.StyledText.title}>
           {" "}
-          Food Image Annotation and Recommendation
+          Good Food
         </StyledText>
       </StyledView>
       <StyledView style={styles.container2}>

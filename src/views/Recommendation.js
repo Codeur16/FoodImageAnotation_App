@@ -1,36 +1,57 @@
-import React, { useEffect,useState } from "react";
-import { Alert, Button, StyleSheet, Text, Style, Image, View } from "react-native";
-import '@tensorflow/tfjs-backend-cpu';
-import '@tensorflow/tfjs-backend-webgl';
-import * as cocoSsd from '@tensorflow-models/coco-ssd';
-import img from '../assets/salmon.png';
-export function RecommendationSreen(){
-  // { route, navigation }) {
-  // const { Id, Name } = route.params;
-// Note: import the cpu and webgl backend and add them to package.json as peer dependencies.
-
-
-
-  // Load the model.
-  const model = cocoSsd.load();
-
-  // Classify the image.
-  const predictions = model.detect(img);
-
-  console.log('Predictions: ');
-  console.log(predictions);
-
+import * as React from "react";
+import { Box, Text, Heading, VStack, FormControl, Input, Link, Button, HStack, Center, NativeBaseProvider } from "native-base";
+const RecommendationSreen = () => {
   return (
-    <View style={{ flex: 1, height:100, alignItems: "center", justifyContent: "center" }} className="w-full h-full bg-white">
-      <Text>Recommendation</Text>
-      <Image
-        source={import('../assets/salmon.png')} // Remplacez par le chemin de votre image
-        style={{width:200, height:200 }}
-      />
-    </View>
-  );
+    <NativeBaseProvider>
+    <Box minHeight={'100%'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
+     <Box width={'80%'}>
+        <Heading>
+          Welcome
+        </Heading>
+        <Heading mt="1"  fontWeight="medium" size="xs">
+          Sign in to continue!
+        </Heading>
+
+        <VStack space={3} mt="5">
+          <FormControl>
+            <FormControl.Label>Email ID</FormControl.Label>
+            <Input  placeholder="Enter your email"/>
+          </FormControl>
+          <FormControl>
+            <FormControl.Label>Password</FormControl.Label>
+            <Input type="password" 
+            placeholder="Enter your password"/>
+            <Link _text={{
+            fontSize: "xs",
+            fontWeight: "500",
+            color: "indigo.500"
+          }} alignSelf="flex-end" mt="1">
+              Forget Password?
+            </Link>
+          </FormControl>
+          <Button mt="2" colorScheme="indigo">
+            Sign in
+          </Button>
+          <HStack mt="6" justifyContent="center">
+            <Text fontSize="sm" color="coolGray.600" _dark={{
+            color: "warmGray.200"
+          }}>
+              I'm a new user.{" "}
+            </Text>
+            <Link _text={{
+            color: "indigo.500",
+            fontWeight: "medium",
+            fontSize: "sm"
+          }} href="#">
+              Sign Up
+            </Link>
+          </HStack>
+        </VStack>
+      </Box>
+  
+   </Box>
+    </NativeBaseProvider>
+  )
 }
 
-
-
-
+module.exports={ RecommendationSreen };

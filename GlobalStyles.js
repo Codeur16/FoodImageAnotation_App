@@ -15,7 +15,7 @@ export const FontSize = {
 };
 /* Colors */
 export const Color = {
-  limegreen: "#29c752",
+  Vert: "#29c752",
   white: "#fff",
 };
 /* border radiuses */

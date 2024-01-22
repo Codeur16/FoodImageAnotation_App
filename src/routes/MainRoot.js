@@ -4,6 +4,7 @@ import { LandingSreen } from "../views/landingScreen";
 import { LogoTitle } from "../components/logoTitle";
 import { FontFamily } from "../../GlobalStyles";
 import { HomeRoot } from "./HomeRoot";
+import { AuthRoot } from "./AuthRoot";
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity, View } from "react-native";
 import { NotificationScreen } from "../views/Notification";
@@ -43,10 +44,55 @@ export default function MainRoot() {
         options={{ headerShown: false }}
       />
       <Stack.Screen
+        name="AuthRoot"
+        component={AuthRoot}
+        options={{
+          title: "GoodFood",
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: "#29C752",
+          },
+          headerTintColor: "#ffff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+          headerTitleAlign: "left",
+          headerTitleStyle: {
+            fontFamily: FontFamily.Salsa,
+            fontSize: 25,
+            fontWeight: "200",
+          },
+          headerLeft: (props) => <LogoTitle {...props} />,
+          // headerRight: () => (
+          //   <View
+          //     style={{
+          //       flexDirection: "row",
+          //       alignItems: "center",
+          //       marginRight: 10,
+          //     }}
+          //   >
+          //     <TouchableOpacity
+          //       onPress={() => {
+          //         navigation.navigate("Notification")
+          //       }}
+          //     >
+          //       <Ionicons
+          //         name="notifications"
+          //         size={24}
+          //         color="#fff"
+          //         style={{ marginRight: 10 }}
+          //       />
+          //     </TouchableOpacity>
+            
+          //   </View>
+          // ),
+        }}
+      />
+      <Stack.Screen
         name="HomeRoot"
         component={HomeRoot}
         options={{
-          title: "FIAR",
+          title: "GoodFood",
           headerTitleAlign: "center",
           headerStyle: {
             backgroundColor: "#29C752",

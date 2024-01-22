@@ -1,161 +1,114 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { View, TouchableOpacity, Text, Alert,SafeAreaView, StatusBar, StyleSheet } from "react-native";
+import { Feather } from "@expo/vector-icons";
+import axios from "axios";
+import { useNavigation } from "@react-navigation/core";
 import {
-  Button,
-  Text,
-  Image,
-  View,
-  Platform,
-  Pressable,
-  StyleSheet,
-  Alert
-} from "react-native";
-import Form from "../components/formulairePlat";
-import * as ImagePicker from "expo-image-picker";
-import { FontAwesome, Ionicons, Feather,MaterialIcons } from "@expo/vector-icons";
-import { FontFamily } from "../../GlobalStyles";
+  TextInput,
+  Appbar,
+  DarkTheme,
+  DefaultTheme,
+  Provider,
+  Surface,
+  ThemeProvider,
+} from "react-native-paper";
+import { Input } from "@rneui/themed";
+import { DropDown } from "react-native-paper-dropdown";
 
+export const AnnotationSreen = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const navigation = useNavigation();
+  const [selectI, setSelectI] = useState("");
+  const [Language] = useState(["java", "js", "python"]);
+  const [age, setAge] = React.useState("");
 
-// export function AnnotationSreen({ route, navigation }) {
-  export function AnnotationSreen() {
-  // const [image, setImage] = useState(null);
-  // // Platform permission
-  // async function getPermission() {
-  //   const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-
-  //   if (status !== "granted") {
-  //     alert("Permission to access image library is importd!");
-  //   }
-  // }
-  // // function to picked image
-  // async function pickImage() {
-  //   let result = await ImagePicker.launchImageLibraryAsync({
-  //     mediaTypes: ImagePicker.MediaTypeOptions.Images,
-  //     allowsEditing: true,
-  //     aspect: [4, 3],
-  //     quality: 1,
-  //   });
-
-  //   if (!result.canceled) {
-  //     if (result.assets && result.assets.length > 0) {
-  //       // Access the selected asset's URI from the assets array
-  //       const selectedImageURI = result.assets[0].uri;
-  //       setImage(result.assets[0].uri);
-  //       console.log(selectedImageURI);
-  //       // You can also upload the image to a server or display it in your UI.
-  //     }
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   (async () => {
-  //     if (Platform.OS !== "web") {
-  //       const { status } =
-  //         await ImagePicker.requestMediaLibraryPermissionsAsync();
-  //       // const { status } = await ImagePicker.requestCameraPermissionsAsync();
-  //       if (status !== "granted") {
-  //         alert("Sorry, we need camera roll permissions to make this work!");
-  //         // alert('Sorry, we need camera permissions to make this work!');
-  //       }
-  //     }
-  //   })();
-  // }, []);
+  //   const [borderColor, setBorderColor] = useState("gray-300");
+  const handleSignup = () => {
+    const user = { name: name, email: email, password: password };
+    // console.log(user);
+    axios
+      .post("http://192.168.43.235:3000/api/user/signup", user)
+      .then((user) => {
+        if (user.data.data) {
+          console.log("user connected");
+          console.log(
+            "\nMessage:\n" + user.data.message,
+            "\n Data: \n " + user
+          );
+          Alert.alert(user.data.message);
+          navigation.navigate("login");
+        }
+        console.log(user);
+      })
+      .catch((e) => {
+        Alert.alert("Erreur lors de la connexion ! \n veillez reessayer");
+        console.log(e);
+      });
+  };
+  const selectedItem = {
+    title: "Selected item title",
+    description: "Secondary long descriptive text ...",
+  };
 
   return (
-    // <View
-    //   style={{
-    //     flex: 1,
-    //     alignItems: "center",
-    //     justifyContent: "flex-start",
-    //     backgroundColor: "white",
-    //   }}
-    // >
-    //   {!image ? (
-    //     <>
-         
-    //       {/* <Text
-    //         style={{
-    //           fontFamily: FontFamily.Poppins,
-    //           color: "rgba(0, 0, 0, 0.5)",
-    //         }}
-    //         className="italic mt-5"
-    //       >
-    //         "Select a meal photo to start annotation"
-    //       </Text> */}
-    //       {/* <Button title="Pick an image from camera roll" onPress={pickImage} /> */}
-         
-    //     </>
-    //   ) : (
-    //     <>
-          
-    //       <Image source={{ uri: image }} style={styles.shadow} />
-    //      <View className="flex flex-row">
-    //       <Pressable
-    //         style={{
-    //           display: "flex",
-    //           flexDirection: "row",
-    //           justifyContent: "center",
-    //           backgroundColor: "red",
-    //         }}
-    //         className="m-5 w-32 h-12  content-center items-center rounded-lg "
-    //         onPress={() => {
-    //           setImage(null)
-    //         }}
-    //       >
-    //         <Text className="font-semibold text-lg color-white">Delete</Text>
-    //         <MaterialIcons name="delete" size={24} color="white" />
-    //       </Pressable>
-    //       <Pressable
-    //         style={{
-    //           display: "flex",
-    //           flexDirection: "row",
-    //           justifyContent: "center",
-    //           backgroundColor: "#29c752",
-    //         }}
-    //         className="m-5 w-32 h-12  content-center items-center rounded-lg "
-    //         onPress={() => {
-    //           Alert.alert("Annotation Api")
-    //           console.log("ok");
-    //         }}
-    //       >
-    //         <Text className="font-semibold text-lg color-white">Pocessing</Text>
-    //         <Feather name="chevrons-right" size={24} color="white" />
-    //       </Pressable>
-    //       </View>
-    //     </>
-    //   )}
-    //     <><Form/></>
-    // </View>
-  <Form />
-  );
-}
+    <View className="flex-1 justify-center items-center bg-white">
+      <Text className="text-3xl font-bold mb-20 font-salsa text-default">
+        Enregistrer un Repas
+      </Text>
 
-const styles = StyleSheet.create({
-  shadow: {
-    borderRadius: 50,
-    width: 200,
-    height:200,
-    justifyContent: "center",
-    alignItems: "center",
-    shadowColor: "rgba(0, 0, 0, 0.5)",
-    shadowOffset: { width: 2, height: 2 },
-    shadowOpacity: 0.5,
-    shadowRadius: 4,
-    margin:20
-  },
-  pressable: {
-    backgroundColor: "white",
-    display: "flex",
-    flexDirection: "colum",
-    justifyContent: "space-around",
-    alignItems: "center",
-    width: 300,
-    height: 250,
-    marginTop: 20,
-    borderRadius: 5,
-    borderStyle: "dashed", // Le style de bordure
-    borderWidth: 2, // L'épaisseur de la bordure
-    borderColor: "#29c7", // La couleur de la bordure
-    borderRadius: 5, // Le rayon de la bordure
-    padding: 10, // L'espacement intérieur
-  },
-});
+      <View className="w-60 justify-center items-center content-center ">
+        {/* <Picker
+          style={{ marginVertical: 10 }}
+          placeholder="selection"
+          selectedItem={selectI}
+          onValueChange={(item) => {
+            setSelectI(item);
+          }}
+        >
+          {Language.map((item, index) => {
+            return <Picker.Item label={item} value={item} key={index} />;
+          })}
+        </Picker> */}
+
+        <TextInput
+          theme={{ colors: { primary: "rgba(41, 199, 82, 1)" } }}
+          className="my-2 w-64 bg-white  "
+          style={{ borderColor: "white" }}
+          mode="outlined"
+          label="Nom"
+          placeholder="Nom du repas"
+          right={<TextInput.Affix text="" />}
+        />
+
+        <TextInput
+          theme={{ colors: { primary: "rgba(41, 199, 82, 1)" } }}
+          className="my-2 w-64 bg-white  "
+          style={{ borderColor: "white" }}
+          mode="outlined"
+          label="Nom"
+          placeholder="Nom du repas"
+          right={<TextInput.Affix text="" />}
+        />
+        <TextInput
+          theme={{ colors: { primary: "rgba(41, 199, 82, 1)" } }}
+          className="my-2 w-64 bg-white  "
+          style={{ borderColor: "white" }}
+          mode="outlined"
+          label="Classe de voyage"
+          placeholder="VIP"
+          right={<TextInput.Affix text="" />}
+        />
+      </View>
+
+      <TouchableOpacity
+        className="bg-blue-500 rounded px-4 py-2"
+        onPress={handleSignup}
+      >
+        <Text className="text-white">Inscription</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};

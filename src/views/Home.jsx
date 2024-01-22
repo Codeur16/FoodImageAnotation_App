@@ -43,7 +43,7 @@ export function HomeSreen({ navigation }) {
         ></View>
         <AutoScrollImageSlider />
       </View>
-      <View
+      {/* <View
         style={styles.container2}
         className=" content-center items-center  "
       >
@@ -89,7 +89,7 @@ export function HomeSreen({ navigation }) {
           </Text>
           <Ionicons name="md-arrow-redo-sharp" size={30} color="#29C752" />
         </Pressable>
-      </View>
+      </View> */}
       <View style={styles.container3}>
         {/* <Navbar navigation={navigation} /> */}
       </View>
