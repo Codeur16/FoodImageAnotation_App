@@ -56,7 +56,11 @@ const checkUserStatusOnAppStart = async () => {
   useEffect(() => {
     // Naviguer automatiquement vers Ecran2 après un délai de 2 secondes (2000 ms)
     const timer = setTimeout(() => {
+<<<<<<< HEAD
       checkUserStatusOnAppStart()
+=======
+      navigation.navigate("AuthRoot");        
+>>>>>>> 6e55108f84c9fadbefd6cf211a37deca252ea923
     }, 6000);
 
     // N'oubliez pas de nettoyer le timer pour éviter les fuites de mémoire

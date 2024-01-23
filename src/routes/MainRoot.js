@@ -38,10 +38,11 @@ export default function MainRoot() {
         },
       }}
     >
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Landing"
         component={LandingSreen}
         options={{ headerShown: false }}
+<<<<<<< HEAD
       />
       <Stack.Screen
         name="AuthRoot"
@@ -91,6 +92,12 @@ export default function MainRoot() {
       <Stack.Screen
         name="HomeRoot"
         component={HomeRoot}
+=======
+      /> */}
+      {/* <Stack.Screen
+        name="AuthRoot"
+        component={AuthRoot}
+>>>>>>> 6e55108f84c9fadbefd6cf211a37deca252ea923
         options={{
           title: "GoodFood",
           headerTitleAlign: "center",
@@ -106,6 +113,53 @@ export default function MainRoot() {
             fontFamily: FontFamily.Salsa,
             fontSize: 25,
             fontWeight: "200",
+          },
+          headerLeft: (props) => <LogoTitle {...props} />,
+          // headerRight: () => (
+          //   <View
+          //     style={{
+          //       flexDirection: "row",
+          //       alignItems: "center",
+          //       marginRight: 10,
+          //     }}
+          //   >
+          //     <TouchableOpacity
+          //       onPress={() => {
+          //         navigation.navigate("Notification")
+          //       }}
+          //     >
+          //       <Ionicons
+          //         name="notifications"
+          //         size={24}
+          //         color="#fff"
+          //         style={{ marginRight: 10 }}
+          //       />
+          //     </TouchableOpacity>
+            
+          //   </View>
+          // ),
+        }}
+      /> */}
+      <Stack.Screen
+        name="HomeRoot"
+        component={HomeRoot}
+        options={{
+          headerShown:true,
+          title: "CamerExpress",
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: "#ffff",
+          
+          },
+          headerTintColor: "#000000",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+          headerTitleAlign: "left",
+          headerTitleStyle: {
+            fontFamily: FontFamily.Laila,
+            fontSize: 18,
+            fontWeight: "600",
           },
           headerLeft: (props) => <LogoTitle {...props} />,
           headerRight: () => (

@@ -2,6 +2,10 @@
     "recommendations": [
         "wallabyjs.console-ninja",
         "adrianwilczynski.terminal-commands",
+<<<<<<< HEAD
         "github.copilot"
+=======
+        "perkovec.emoji"
+>>>>>>> 6e55108f84c9fadbefd6cf211a37deca252ea923
     ]
 }

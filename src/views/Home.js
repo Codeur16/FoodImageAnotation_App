@@ -21,7 +21,7 @@ import {
   Ionicons,
   FontAwesome,
 } from "@expo/vector-icons";
-import { AnnotationSreen } from "./Annotation";
+import { AnnotationSreen } from "./Acceuil";
 
 // function d'un autre ecran de navigation
 
