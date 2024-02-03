@@ -33,6 +33,7 @@ const CustomSwiper = () => {
 const styles = StyleSheet.create({
   wrapper: {
     // Styles pour le conteneur du Swiper
+   
   },
   slide: {
     flex: 1,

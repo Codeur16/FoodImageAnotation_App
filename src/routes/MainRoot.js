@@ -4,6 +4,7 @@ import { LandingSreen } from "../views/landingScreen";
 import { LogoTitle } from "../components/logoTitle";
 import { FontFamily } from "../../GlobalStyles";
 import { HomeRoot } from "./HomeRoot";
+
 import { AuthRoot } from "./AuthRoot";
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity, View } from "react-native";
@@ -21,7 +22,7 @@ export default function MainRoot() {
       screenOptions={{
         unmountOnBlur: false,
         headerTitleStyle: {
-          fontFamily: FontFamily.Salsa,
+          fontFamily: FontFamily.Poppins,
         },
         headerTitleAlign: "center",
         headerStyle: {
@@ -30,6 +31,7 @@ export default function MainRoot() {
         headerTintColor: "#ffff",
         headerTitleStyle: {
           fontWeight: "bold",
+          fontSize:20,
         },
         tabBarOptions: {
           style: {
@@ -38,15 +40,14 @@ export default function MainRoot() {
         },
       }}
     >
-      {/* <Stack.Screen
+      <Stack.Screen
         name="Landing"
         component={LandingSreen}
         options={{ headerShown: false }}
-<<<<<<< HEAD
       />
       <Stack.Screen
-        name="AuthRoot"
-        component={AuthRoot}
+        name="HomeRoot"
+        component={HomeRoot}
         options={{
           title: "GoodFood",
           headerTitleAlign: "center",
@@ -59,45 +60,39 @@ export default function MainRoot() {
           },
           headerTitleAlign: "left",
           headerTitleStyle: {
-            fontFamily: FontFamily.Salsa,
+            fontFamily: FontFamily.Poppins,
             fontSize: 25,
             fontWeight: "200",
           },
           headerLeft: (props) => <LogoTitle {...props} />,
-          // headerRight: () => (
-          //   <View
-          //     style={{
-          //       flexDirection: "row",
-          //       alignItems: "center",
-          //       marginRight: 10,
-          //     }}
-          //   >
-          //     <TouchableOpacity
-          //       onPress={() => {
-          //         navigation.navigate("Notification")
-          //       }}
-          //     >
-          //       <Ionicons
-          //         name="notifications"
-          //         size={24}
-          //         color="#fff"
-          //         style={{ marginRight: 10 }}
-          //       />
-          //     </TouchableOpacity>
+          headerRight: () => (
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                marginRight: 10,
+              }}
+            >
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("Notification")
+                }}
+              >
+                <Ionicons
+                  name="notifications"
+                  size={24}
+                  color="#fff"
+                  style={{ marginRight: 10 }}
+                />
+              </TouchableOpacity>
             
-          //   </View>
-          // ),
+            </View>
+          ),
         }}
       />
       <Stack.Screen
-        name="HomeRoot"
-        component={HomeRoot}
-=======
-      /> */}
-      {/* <Stack.Screen
         name="AuthRoot"
         component={AuthRoot}
->>>>>>> 6e55108f84c9fadbefd6cf211a37deca252ea923
         options={{
           title: "GoodFood",
           headerTitleAlign: "center",
@@ -106,60 +101,13 @@ export default function MainRoot() {
           },
           headerTintColor: "#ffff",
           headerTitleStyle: {
-            fontWeight: "bold",
+            fontWeight: "medium",
           },
           headerTitleAlign: "left",
           headerTitleStyle: {
-            fontFamily: FontFamily.Salsa,
+            fontFamily: FontFamily.Poppins,
             fontSize: 25,
             fontWeight: "200",
-          },
-          headerLeft: (props) => <LogoTitle {...props} />,
-          // headerRight: () => (
-          //   <View
-          //     style={{
-          //       flexDirection: "row",
-          //       alignItems: "center",
-          //       marginRight: 10,
-          //     }}
-          //   >
-          //     <TouchableOpacity
-          //       onPress={() => {
-          //         navigation.navigate("Notification")
-          //       }}
-          //     >
-          //       <Ionicons
-          //         name="notifications"
-          //         size={24}
-          //         color="#fff"
-          //         style={{ marginRight: 10 }}
-          //       />
-          //     </TouchableOpacity>
-            
-          //   </View>
-          // ),
-        }}
-      /> */}
-      <Stack.Screen
-        name="HomeRoot"
-        component={HomeRoot}
-        options={{
-          headerShown:true,
-          title: "CamerExpress",
-          headerTitleAlign: "center",
-          headerStyle: {
-            backgroundColor: "#ffff",
-          
-          },
-          headerTintColor: "#000000",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-          headerTitleAlign: "left",
-          headerTitleStyle: {
-            fontFamily: FontFamily.Laila,
-            fontSize: 18,
-            fontWeight: "600",
           },
           headerLeft: (props) => <LogoTitle {...props} />,
           headerRight: () => (

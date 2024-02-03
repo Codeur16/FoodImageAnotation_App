@@ -1,51 +1,55 @@
-import React, { useEffect,useState } from "react";
-import {  Platform, StyleSheet, Text, Image, View,ToastAndroid } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Platform, StyleSheet, Text, Image, View,  ToastAndroid  } from "react-native";
 import { ActivityIndicator } from "react-native";
 import logo from "../assets/images/icon.512.png";
 import food1 from "../assets/images/ellipse-1.png";
 import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
 import { styled } from "nativewind";
-import {FontFamily} from "../../GlobalStyles";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { FontFamily } from "../../GlobalStyles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const StyledView = styled(View);
 const StyledText = styled(Text);
 
 
 
-// Fonction pour vérifier si l'utilisateur est déjà connecté
-const checkIfUserIsLoggedIn = async () => {
-  try {
-    const userToken = await AsyncStorage.getItem('userToken');
-    return  userToken !== null;
-  } catch (error) {
-    console.error('Erreur lors de la vérification de la connexion:', error);
-    return false;
-  }
-};
-
 // function d'un autre ecran de navigation
 
 export function LandingSreen() {
+  const [userToken, setUserToken]=useState(null);
   const navigation = useNavigation();
- const [isLoggedIn, setIsLoggedIn]=useState(undefined)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+
+  // Fonction pour vérifier si l'utilisateur est déjà connecté
+const checkIfUserIsLoggedIn =  () => {
+
+   AsyncStorage.getItem("userToken")
+  .then((token)=>{
+    setUserToken(token);
+    console.log(">>TOKEN:"+userToken+">>token="+token)
+    checkUserStatusOnAppStart(token)
+  })
+  .catch((e)=>{console.error(e)})
+     
+ 
+
+};
 
 // utilisation au démarrage de l'application
-const checkUserStatusOnAppStart = async () => {
-  let isLoggedIn = await checkIfUserIsLoggedIn();
+const checkUserStatusOnAppStart = async (token) => {
   
-  if (isLoggedIn) {
+  if (token!=null) {
     // Utilisateur déjà connecté, procédez en conséquence
     ToastAndroid.show(
-      `Bon retour parmi nous !!!\nRedirection Automatique`,
+      `\n Redirection Automatique \n`,
       ToastAndroid.LONG)
-      setIsLoggedIn(isLoggedIn)
+      // setIsLoggedIn(isLoggedIn)
       return navigation.navigate("HomeRoot");
    
   } else {
     // Redirigez vers l'écran de connexion
-    setIsLoggedIn(isLoggedIn)
+    // setIsLoggedIn(isLoggedIn)
     ToastAndroid.show(
       `Nouveau utilisateur !!`,
       ToastAndroid.LONG)
@@ -54,29 +58,24 @@ const checkUserStatusOnAppStart = async () => {
 };
 
   useEffect(() => {
+   
     // Naviguer automatiquement vers Ecran2 après un délai de 2 secondes (2000 ms)
     const timer = setTimeout(() => {
-<<<<<<< HEAD
-      checkUserStatusOnAppStart()
-=======
+      checkIfUserIsLoggedIn()
       navigation.navigate("AuthRoot");        
->>>>>>> 6e55108f84c9fadbefd6cf211a37deca252ea923
     }, 6000);
 
     // N'oubliez pas de nettoyer le timer pour éviter les fuites de mémoire
     return () => clearTimeout(timer);
   },[]);
 
-  
-
-  
   return (
     <View style={styles.container}>
       <StyledView style={styles.container1} className="">
-        <StyledText style={styles.StyledText.title2}> GoodFood</StyledText>
+        <StyledText style={styles.StyledText.title2}> FIAR</StyledText>
         <StyledText style={styles.StyledText.title}>
           {" "}
-          Good Food
+          Food Image Annotation and Recommendation
         </StyledText>
       </StyledView>
       <StyledView style={styles.container2}>
@@ -90,10 +89,14 @@ const checkUserStatusOnAppStart = async () => {
         <ActivityIndicator color="#ffff" size="large" />
       </StyledView>
       <StyledView style={styles.container3} className="w-full">
-        <StyledView style={styles.image} >
-          {Platform.OS === 'web' ? (<></>) : (<>
-          <Image source={food1} className="w-full h-40 " />
-          </>)}
+        <StyledView style={styles.image}>
+          {Platform.OS === "web" ? (
+            <></>
+          ) : (
+            <>
+              <Image source={food1} className="w-full h-40 " />
+            </>
+          )}
         </StyledView>
       </StyledView>
     </View>
@@ -108,9 +111,9 @@ const styles = StyleSheet.create({
     width: "100%",
     // ...Platform.select({
     //   web: {
-    //     backgroundColor: 'lightblue', 
+    //     backgroundColor: 'lightblue',
     //   }})
-   
+
     // justifyContent:'center',
     // alignItem:'center'
   },

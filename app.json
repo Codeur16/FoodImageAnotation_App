@@ -1,31 +1,36 @@
 {
   "expo": {
-    "name": "CamerExpress",
-    "slug": "CamerExpress",
+    "name": "FoodAnnotation",
+    "slug": "goodfood",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logo.png",
+    "icon": "./assets/icon2.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/logo.png",
+      "image": "./assets/icon2.png",
       "resizeMode": "contain",
-      "backgroundColor": "#fff"
+      "backgroundColor": "#29C752"
     },
-    "assetBundlePatterns": ["./assets/fonts/"] ,
-    
+    "assetBundlePatterns": [
+      "./assets/fonts/"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo.png",
-        "backgroundColor": "#fff"
-      }
+        "foregroundImage": "./assets/icon2.png",
+        "backgroundColor": "#29C752"
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.tokoss.goodfood"
     },
     "web": {
-      "favicon": "./assets/logo.png",
+      "favicon": "./assets/icon2.png",
       "bundler": "metro",
-      "backgroundColor":"#fff"
+      "backgroundColor": "#29C752"
     },
     "plugins": [
       [
@@ -34,6 +39,12 @@
           "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "aa6dd71c-49c5-430e-b86f-09ed36e72d1f"
+      }
+    },
+    "owner": "tokoss"
   }
 }
